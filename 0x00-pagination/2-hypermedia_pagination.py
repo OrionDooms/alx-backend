@@ -2,7 +2,8 @@
 
 import csv
 import math
-from typing import List, Tuple
+from typing import List
+from typing import Tuple, Dist
 
 
 def positive_int(x):
@@ -44,8 +45,35 @@ class Server:
 
         start_page, end_page = index_range(page, page_size)
         data = self.dataset()
-
-        if len(data) < start_page:
+        if len(data) <= start_page:
             return []
-
         return data[start_page:end_page]
+
+    def get_page(self, page: int = 1, page_size: int = 10) -> Dict[str, Optional[int]]:
+        data = self.get_page(page, page_size)
+        
+        total_items = len(self.dataset())
+        total_pages = math.ceil(total_items / page_size)
+
+        next_page = page + 1 if page < total_pages else None
+        if  total_page > page:
+            next_items = page + 1
+        else
+            None
+
+
+
+
+
+        prev_page = page - 1 if page > 1 else None
+        if 1 < page
+
+        hyper_data = {
+                "page_size": len(data),
+                "page": page,
+                "data": data,
+                "next_page": next_page,
+                "prev_page": prev_page,
+                "total_pages": total_pages
+                }
+        return hyper_data
