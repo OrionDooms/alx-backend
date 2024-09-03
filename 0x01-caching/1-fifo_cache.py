@@ -3,8 +3,9 @@
 from collections import OrderedDict
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
-    """class FIFOCache that inherits from BaseCaching and is a caching system"""
+    """class FIFOCache that inherits from BaseCaching"""
     def __init__(self):
         """Initialize with object attributes, super() inherit attributes
         from parent class and the OrderedDict class and assign it to the
@@ -24,6 +25,6 @@ class FIFOCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        if key is not None or key in self.cache_data:
-            return self.cache_data[key]
-        return None
+        if key is None or key not in self.cache_data:
+            return None
+        return self.cache_data[key]
