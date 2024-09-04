@@ -16,15 +16,16 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """Assign to the dictionary self.cache_data the items value
         for the key"""
-        if key and item:
-            if key not in self.cache_data:
-                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                    first_key = next(iter(self.cache_data))
-                    print("DISCARD: {}".format(first_key))
-                    self.cache_data.pop(first_key)
-            self.cache_data[key] = item
+        if key is None or item is None:
+            return
+        if key not in self.cache_data:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                first_key = next(iter(self.cache_data))
+                print("DISCARD: {}".format(first_key))
+                self.cache_data.pop(first_key)
+        self.cache_data[key] = item
 
     def get(self, key):
-        if key and key in self.cache_data:
-            return self.cache_data[key]
-        return None
+        if key is None or key not in self.cache_data:
+            return None
+        return self.cache_data[key]
