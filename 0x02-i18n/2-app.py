@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Setting up a basic flask app"""
-from flask import Flask, render_template
+from flask import request, Flask, render_template
 from flask_babel import Babel
 
 
@@ -24,7 +24,14 @@ babel = Babel(app)
 def Index():
     """A index.html that outputs Welcome to Holberton as page title
     and Hello world as a header."""
-    return render_template('0-index.html')
+    return render_template('2-index.html')
+
+
+def get_locale():
+    """request.accept_languages.best_match() checks the
+    Accept-language header from request and matches
+    config.LANGUAGES"""
+    return request.accept_languages.best_match([Config.LANGUAGES])
 
 
 if __name__ == '__main__':
