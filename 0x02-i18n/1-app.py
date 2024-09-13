@@ -9,8 +9,8 @@ class Config:
     The default locale languages is 'en' and the default
     timezone is set to 'UTC'."""
     LANGUAGES = ['en', 'fr']
-    DEFAULT_LOCALE = 'en'
-    DEFAULT_TIMEZONE = 'UTC'
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 """Initialize the app and Babel object, Apply the Config
