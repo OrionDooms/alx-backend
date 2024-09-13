@@ -27,6 +27,7 @@ def Index():
     return render_template('2-index.html')
 
 
+@babel.localeselector
 def get_locale():
     """request.accept_languages.best_match() checks the
     Accept-language header from request and matches
